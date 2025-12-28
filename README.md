@@ -20,3 +20,5 @@ steps for project
   e. npm run build  
   f. firebase deploy  
   and our project is deployed at https://netflix-a3e34.web.app
+- added email and password authentication to the web app
+- set up authentication using firebase method in Login component.

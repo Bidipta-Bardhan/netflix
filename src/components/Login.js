@@ -2,7 +2,11 @@ import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { NETFLIX_BG } from "../utils/photo_constant";
 import { validateLoginForm } from "../utils/ValidateLoginForm";
-
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/fireBase";
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -21,6 +25,36 @@ const Login = () => {
     );
     console.log(errorMessage);
     setErrorMessage(errorMessage);
+    if (errorMessage) return;
+    if (!isSignIn) {
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log("Account created:", user);
+        })
+        .catch((error) => {
+          console.error("Error code:", error.code, "Message:", error.message);
+          setErrorMessage(error.code + " " + error.message);
+        });
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          console.log("Logged in as:", userCredential.user.email);
+        })
+        .catch((error) => {
+          console.error("Login failed:", error.message);
+          setErrorMessage(error.message);
+        });
+    }
   };
   return (
     <div>
