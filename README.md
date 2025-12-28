@@ -22,3 +22,12 @@ steps for project
   and our project is deployed at https://netflix-a3e34.web.app
 - added email and password authentication to the web app
 - set up authentication using firebase method in Login component.
+- npm i -D @reduxjs/toolkit
+- npm i react-redux
+- created appStore
+- created userSlice
+- provided appStore to app.js
+- in body useEffect attached listner for onAuthState changed and dispatched action for signin/signup and signout
+- in login add method updateProfile to update the profile with displayName
+- routing to browse and login page accordingly
+- implement signout feature in header.js using firebase methods.
