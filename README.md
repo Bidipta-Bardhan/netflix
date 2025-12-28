@@ -10,3 +10,13 @@ steps for project
 - used useRef hook to reference form values
 - have validate method for form data
 - shown error message
+- created a new project in firebase
+- opted Set up Firebase Hosting for that project
+- run commands:
+  a. npm install -g firebase-tools
+  b. firebase login  
+  c. firebase init (public folder will be build)
+  d. npm install firebase  
+  e. npm run build  
+  f. firebase deploy  
+  and our project is deployed at https://netflix-a3e34.web.app
